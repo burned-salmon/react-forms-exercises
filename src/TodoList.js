@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import NewListItemForm from "./NewListItemForm";
 import { v4 as uuid } from "uuid";
 
+function remove(e) {
+	const listItem = e.target.parentNode;
+	listItem.parentNode.removeChild(listItem);
+}
 
-function ShoppingList() {
+function TodoList() {
   const [items, setItems] = useState([]);
 
   const renderItems = () => {
@@ -11,7 +15,7 @@ function ShoppingList() {
       <ul>
         {items.map(item => (
           <li key={item.id}>
-            {item.name}: {item.qty}
+            {item.name} <button onClick={remove}>X</button>
           </li>
         ))}
       </ul>
@@ -19,7 +23,7 @@ function ShoppingList() {
   };
   // end renderItems
 
-  /** Add new item object to cart. */
+  /** Add new item object to list. */
   const addItem = item => {
     let newItem = { ...item, id: uuid() };
     setItems(items => [...items, newItem]);
@@ -27,7 +31,7 @@ function ShoppingList() {
   // end addItem
 
   return (
-    <div className="ShoppingList">
+    <div className="TodoList">
       <NewListItemForm addItem={addItem} />
       {renderItems()}
     </div>
@@ -35,4 +39,4 @@ function ShoppingList() {
 };
 // end
 
-export default ShoppingList;
+export default TodoList;

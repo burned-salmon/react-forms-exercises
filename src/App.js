@@ -1,10 +1,16 @@
 import React from "react";
-import ShoppingList from "./ShoppingList";
+import BoxList from "./BoxList";
+import TodoList from "./TodoList";
 
 function App() {
   return (
     <div className="App">
-      <ShoppingList />
+      <div className="left">
+        <BoxList />
+      </div>
+      <div className="right">
+        <TodoList />
+      </div>
     </div>
   );
 }

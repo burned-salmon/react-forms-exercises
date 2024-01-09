@@ -2,16 +2,16 @@ import React, { useState } from "react";
 
 /** Form for creating a new item to add to a list.
  *
- * Has state for the name/quantity of the item; on submission,
- * sends {name, qty} to fn rec'd from parent.
+ * Has state for the name of the item; on submission,
+ * sends {name} to fn rec'd from parent.
  *
  */
 
 const NewListItemForm = ({ addItem }) => {
-  const INITIAL_STATE = { name: "", qty: 0 };
+  const INITIAL_STATE = { name: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
 
-  /** Send {name, quantity} to parent
+  /** Send {name} to parent
    *    & clear form. */
 
   const handleSubmit = evt => {
@@ -34,20 +34,11 @@ const NewListItemForm = ({ addItem }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="name">Todo:</label> 
       <input
         id="name"
         name="name"
         value={formData.name}
-        onChange={handleChange}
-      />
-
-      <label htmlFor="qty">Qty:</label>
-      <input
-        type="number"
-        id="qty"
-        name="qty"
-        value={formData.qty}
         onChange={handleChange}
       />
 

@@ -1,18 +1,18 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import ShoppingList from "./ShoppingList";
+import TodoList from "./TodoList";
 
 it("renders without crashing", function() {
-  render(<ShoppingList />);
+  render(<TodoList />);
 });
 
 it("matches snapshot", function() {
-  const { asFragment } = render(<ShoppingList />);
+  const { asFragment } = render(<TodoList />);
   expect(asFragment()).toMatchSnapshot();
 });
 
 it("can add a new item", function() {
-  const { getByLabelText, queryByText } = render(<ShoppingList />);
+  const { getByLabelText, queryByText } = render(<TodoList />);
 
   // no items yet
   expect(queryByText("ice cream: 100")).not.toBeInTheDocument();
